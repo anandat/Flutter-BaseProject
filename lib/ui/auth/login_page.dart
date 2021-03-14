@@ -6,12 +6,12 @@ import 'package:sandyfarm/bloc/auth/auth_bloc.dart';
 import 'package:sandyfarm/bloc/auth/auth_event.dart';
 import 'package:sandyfarm/bloc/auth/auth_state.dart';
 
-class Splash extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<Splash> {
+class _LoginPageState extends State<LoginPage> {
   AuthBloc authBloc;
 
   @override
@@ -24,44 +24,41 @@ class _LoginPageState extends State<Splash> {
     // authBloc=BlocProvider.of<AuthBloc>(context);
     // TODO: implement build
     return MaterialApp(
-      home: BlocProvider(
-        create: (BuildContext context) => AuthBloc(InitialState()),
-        child: Scaffold(
-            body: BlocListener<AuthBloc, AuthState>(
-          listener: (context, state) {
-            if (state is TestState) {
-              print("lashdoahosdihask");
-            }
-          },
-          child: BlocBuilder(
-            builder: (context, state) {
-              /*if (state is ) {
+      home: Scaffold(
+          body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is TestState) {
+            print("lashdoahosdihask");
+          }
+        },
+        child: BlocBuilder(
+          builder: (context, state) {
+            /*if (state is ) {
 
-                  }  */
-              return Scaffold(
-                  appBar: AppBar(
-                    title: Text("SandyFarms"),
+                }  */
+            return Scaffold(
+                appBar: AppBar(
+                  title: Text("SandyFarms"),
+                ),
+                body: Center(
+                  child: InkWell(
+                    child: Text("atul"),
+                    onTap: () {
+                      BlocProvider.of<AuthBloc>(context).add(TestEvent());
+                     // authBloc.add(TestEvent());
+                      /*Scaffold.of(context).showSnackBar(SnackBar(
+                        duration: Duration(milliseconds: 100000),
+                        content: Text(
+                          "asdasdas",
+                        ),
+                      ));*/
+                    },
                   ),
-                  body: Center(
-                    child: InkWell(
-                      child: Text("atul"),
-                      onTap: () {
-                        BlocProvider.of<AuthBloc>(context).add(TestEvent());
-                       // authBloc.add(TestEvent());
-                        /*Scaffold.of(context).showSnackBar(SnackBar(
-                          duration: Duration(milliseconds: 100000),
-                          content: Text(
-                            "asdasdas",
-                          ),
-                        ));*/
-                      },
-                    ),
-                  ));
-            },
-            cubit: authBloc,
-          ),
-        )),
-      ),
+                ));
+          },
+          cubit: authBloc,
+        ),
+      )),
     );
   }
 }

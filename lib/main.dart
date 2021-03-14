@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sandyfarm/sandyfarms_bloc_observer.dart';
+import 'package:sandyfarm/splash/splash.dart';
 import 'package:sandyfarm/ui/auth/login_page.dart';
 import 'package:sandyfarm/utils/auth_utils.dart';
 
@@ -27,5 +28,5 @@ void main() async {
       color: Colors.green,
       values: FlavorValues(baseUrl: AuthUtils.productionHost));
 
-  runApp(Splash());
+  runApp(SandyFarmsApp());
 }
